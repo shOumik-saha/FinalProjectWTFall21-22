@@ -58,7 +58,7 @@ if(isset($_SESSION['username']))
 <div style="margin-left:25%">
 
 <div class="w3-container w3-dark-white" style="margin-top:50px">
-  <form class="loginbox" onclick="return validation()" method="post" action="../controller/changePassword.php">
+  <form class="loginbox" onclick="return validation()" method="post" action="../controller/changePasswordWardenC.php">
     <br>
       <h2>Change Password</h2>
       <br><br /><br><br />

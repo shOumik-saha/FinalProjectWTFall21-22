@@ -46,13 +46,6 @@ if(isset($_POST['submit']) && isset($_SESSION['username']))
      $newPasswordErr= "Password must not be less than eight (8) characters";
      $flag=0;
    }
-   else {
-     if(substr_count($npassword,"@")<1 || substr_count($npassword,"#")<1 || substr_count($npassword,"%")<1 || substr_count($npassword,"$")<1)
-     {
-       $newPasswordErr= "Password must contain at least one of the special characters (@, #, $,%)";
-       $flag=0;
-     }
-   }
  }
 
  if(empty($_POST["rnpassword"]))
@@ -66,13 +59,6 @@ if(isset($_POST['submit']) && isset($_SESSION['username']))
    {
      $retypePasswordErr= "Password must not be less than eight (8) characters";
      $flag=0;
-   }
-   else {
-     if(substr_count($rnpassword,"@")<1 || substr_count($rnpassword,"#")<1 || substr_count($rnpassword,"%")<1 || substr_count($rnpassword,"$")<1)
-     {
-       $retypePasswordErr= "Password must contain at least one of the special characters (@, #, $,%)";
-       $flag=0;
-     }
    }
  }
 
@@ -92,10 +78,10 @@ if(isset($_POST['submit']) && isset($_SESSION['username']))
         if($cpassword==$passwordFromDB)
         {
           if($npassword==$rnpassword){
-          if (updatePassword($_SESSION['username'], $npassword)) {
+          if (updatePasswordWarden($_SESSION['username'], $npassword)) {
             echo 'Successfully updated!!';
            session_destroy();
-            header('Location: ../View/login.php');
+            header('Location: ../view/loginWardenView.php');
           }
           else {
             echo "Update unsuccessful!!";
@@ -124,7 +110,7 @@ if(isset($_POST['submit']) && isset($_SESSION['username']))
      'newPasswordErr' => $newPasswordErr,
      'retypePasswordErr' => $retypePasswordErr
   );
-       header("location:../view/changePassword.php?" . http_build_query($args));
+       header("location:../view/changePasswordWardenView.php?" . http_build_query($args));
   }
 }
 
